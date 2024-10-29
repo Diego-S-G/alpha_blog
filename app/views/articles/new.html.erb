@@ -19,7 +19,10 @@
         <%= form.text_area :description %>
     </div>
     <div>
-    <%= form.submit "Criar" %>
-    <a href='/articles'>Voltar</a>
+        <%= form.submit "Criar" %>
     </div>
 <% end %>
+
+<p>
+    <td><%= link_to "Voltar", articles_path %></td>
+</p>

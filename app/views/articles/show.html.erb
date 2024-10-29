@@ -2,4 +2,6 @@
 <p><strong>Título: </strong><%=@article.title%></p>
 <p><strong>Descrição: </strong><%=@article.description%></p>
 <br>
-<a href='/articles'>Voltar para Artigos</a>
+<td><%= link_to "Editar", edit_article_path(@article) %></td> |
+<td><%= link_to "Remover", article_path(@article), data: { turbo_method: :delete, "turbo-confirm": "Tem certeza?" } %></td> |
+<td><%= link_to "Voltar", articles_path %></td>

@@ -5,7 +5,7 @@
         <tr>
             <th>Título</th>
             <th>Descrição</th>
-            <th>Ações</th>
+            <th colspan='3'>Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -22,5 +22,7 @@
 </table>
 
 <br>
-<a href='/articles/new'>Novo Artigo</a>
-<a href='/'>Home Page</a>
+<p>
+    <td><%= link_to "Novo Artigo", new_article_path %></td>
+    <a href='/'>Home Page</a>
+</p>

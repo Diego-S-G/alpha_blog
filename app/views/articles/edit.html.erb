@@ -19,7 +19,10 @@
         <%= form.text_area :description %>
     </div>
     <div>
-    <%= form.submit "Atualizar" %>
-    <a href='/articles'>Voltar</a>
+        <%= form.submit "Atualizar" %>
     </div>
 <% end %>
+
+<p>
+    <td><%= link_to "Cancelar", articles_path %></td>
+</p>
