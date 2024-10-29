@@ -1,27 +1,7 @@
 <h1>Criar um novo Artigo</h1>
 
-<% if @article.errors.any? %>
-    <h2>Alguns erros impediram o artigo de ser salvo:</h2>
-    <ul>
-        <% @article.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-        <% end %>
-    </ul>
-<% end %>
+<%= render 'form' %>
 
-<%= form_with scope: :article, url: articles_path, local: true do |form| %>
-    <div style='margin-bottom: 20px'>
-        <%= form.label "Título" %> <br>
-        <%= form.text_field :title %>
-    </div>
-    <div style='margin-bottom: 20px'>
-        <%= form.label "Descrição" %> <br>
-        <%= form.text_area :description %>
-    </div>
-    <div>
-        <%= form.submit "Criar" %>
-    </div>
-<% end %>
 
 <p>
     <td><%= link_to "Voltar", articles_path %></td>
