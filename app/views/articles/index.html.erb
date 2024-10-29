@@ -1,0 +1,23 @@
+<h1>Lista de Artigos</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @articles.each do |article|%>
+        <tr>
+            <td><%= article.title %></td>
+            <td><%= article.description %></td>
+            <td>Yatta</td>
+        </tr>
+        <%end%>
+    </tbody>
+</table>
+
+<br>
+<a href='/'>Home Page</a>

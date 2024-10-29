@@ -17,6 +17,4 @@ Rails.application.routes.draw do
   get "about" => "pages#about"
 
   resources :articles
-
-  get "show/:id" => "articles#show"
 end
