@@ -13,9 +13,9 @@
         <tr>
             <td><%= article.title %></td>
             <td><%= article.description %></td>
-            <td><a href='/articles/<%= article.id %>'>Ver</a></td>
-            <td><a href='/articles/<%= article.id %>/edit'>Atualizar</a></td>
-            <td><a href='/'>Remover</a></td>
+            <td><%= link_to "Ver", article_path(article) %></td>
+            <td><%= link_to "Editar", edit_article_path(article) %></td>
+            <td><%= link_to "Remover", article_path(article), data: { turbo_method: :delete, "turbo-confirm": "Tem certeza?" } %></td>
         </tr>
         <%end%>
     </tbody>
