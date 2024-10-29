@@ -1,5 +1,14 @@
 <h1>Criar um novo Artigo</h1>
 
+<% if @article.errors.any? %>
+    <h2>Alguns erros impediram o artigo de ser salvo:</h2>
+    <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
 <%= form_with scope: :article, url: articles_path, local: true do |form| %>
     <div style='margin-bottom: 20px'>
         <%= form.label "Título" %> <br>
