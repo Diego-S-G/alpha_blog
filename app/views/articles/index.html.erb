@@ -13,7 +13,9 @@
         <tr>
             <td><%= article.title %></td>
             <td><%= article.description %></td>
-            <td>Yatta</td>
+            <td><a href='/articles/<%= article.id %>'>Ver</a></td>
+            <td><a href='/articles/<%= article.id %>/edit'>Atualizar</a></td>
+            <td><a href='/'>Remover</a></td>
         </tr>
         <%end%>
     </tbody>

@@ -1,0 +1,25 @@
+<h1>Editar Artigo</h1>
+
+<% if @article.errors.any? %>
+    <h2>Alguns erros impediram o artigo de ser editado:</h2>
+    <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_with(model: @article, local: true) do |form| %>
+    <div style='margin-bottom: 20px'>
+        <%= form.label "Título" %> <br>
+        <%= form.text_field :title %>
+    </div>
+    <div style='margin-bottom: 20px'>
+        <%= form.label "Descrição" %> <br>
+        <%= form.text_area :description %>
+    </div>
+    <div>
+    <%= form.submit "Atualizar" %>
+    <a href='/articles'>Voltar</a>
+    </div>
+<% end %>
