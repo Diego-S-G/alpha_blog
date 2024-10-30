@@ -1,7 +1,12 @@
-<h1>Home Page yatta</h1>
-<%= link_to about_path do %>
-<button>About</button>
-<%end %>
-<br>
+<head>
+<%= stylesheet_link_tag "home", media: "all" %>
+</head>
 
-<a href='/articles'>Ir pra Artigos</a>
+<div class="container text-light p-5 text-center" id="home-container">
+    <div class="container p-5">
+        <h1 class="display-4">Welcome to my Website</h1>
+        <hr class="my-4">
+        <p>Go to My Website</p>
+        <a href="#" class="btn btn-success btn-lg" role="button">Inscreva-se!</a>
+    </div>
+</div>
