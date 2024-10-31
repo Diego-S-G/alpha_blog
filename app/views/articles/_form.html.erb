@@ -1,14 +1,7 @@
 <div class="container">
-  <% if @article.errors.any? %>
-    <h2>Alguns erros impediram a ação de ser concluída:</h2>
-    <ul>
-      <% @article.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  <% end %>
   <div class="row justify-content-center">
     <div class="col-10">
+      <%= render 'shared/errors'%>
       <%= form_with(model: @article, class: "form-partial shadow p-3 mb-3 rounded", local: true) do |form| %>
         <div class="form-group row mb-4">
           <%= form.label "Título", class: "col-2 col-form-label text-light" %>
