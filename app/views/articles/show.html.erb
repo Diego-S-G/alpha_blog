@@ -1,7 +1,24 @@
-<h1>Yatta</h1>
-<p><strong>Título: </strong><%=@article.title%></p>
-<p><strong>Descrição: </strong><%=@article.description%></p>
-<br>
-<td><%= link_to "Editar", edit_article_path(@article) %></td> |
-<td><%= link_to "Remover", article_path(@article), data: { turbo_method: :delete, "turbo-confirm": "Tem certeza?" } %></td> |
-<td><%= link_to "Voltar", articles_path %></td>
+<div class="text-center mt-4">
+  <div class="container">
+    <h2><%= @article.title %></h2>
+    <div class="row justify-content-md-center">
+      <div class="col-8 mt-4">
+        <div class="card text-center shadow mb-5 bg-body-tertiary rounded">
+          <div class="card-header">
+            <em>
+              Por: Código ainda para ser implementado
+            </em>
+          </div>
+          <div class="card-body">
+            <div class="card-text text-start"><%= simple_format(@article.description) %></div>
+            <%= link_to "Editar", edit_article_path(@article), class: "btn btn-outline-primary", style: "width: 80px" %>
+            <%= link_to "Remover", article_path(@article), data: { turbo_method: :delete, "turbo-confirm": "Tem certeza?" }, class: "btn btn-outline-danger", style: "width: 91px" %>
+          </div>
+          <div class="card-footer text-body-secondary">
+            <small>Created <%= time_ago_in_words(@article.created_at) %> ago, Edited <%= time_ago_in_words(@article.updated_at) %> ago</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
