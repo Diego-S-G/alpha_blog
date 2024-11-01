@@ -2,6 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-6">
       <%= render 'shared/errors', obj: @user %>
+      
       <%= form_with(model: @user, class: "form-partial shadow p-3 mb-3 rounded", local: true) do |form| %>
         <div class="form-group row mb-2">
           <%= form.label "Nome de Usuário", class: "form-label col-form-label-lg text-light" %>
@@ -9,18 +10,21 @@
             <%= form.text_field :username, class: "form-control form-control-lg shadow rounded", placeholder: "Insira seu nome de usuário aqui" %>
           </div>
         </div>
+
         <div class="form-group row mb-2">
           <%= form.label "E-mail", class: "form-label col-form-label-lg  text-light" %> <br>
           <div>
             <%= form.email_field :email, class: "form-control form-control-lg shadow rounded", placeholder: "Insira seu e-mail aqui" %>
           </div>
         </div>
+
         <div class="form-group row">
           <%= form.label "Senha", class: "form-label col-form-label-lg  text-light" %> <br>
           <div>
             <%= form.password_field :password, class: "form-control form-control-lg shadow rounded", placeholder: "Escolha uma senha" %>
           </div>
         </div>
+
         <div class="form-group text-center mt-4">
           <%= form.submit(@user.new_record? ? "Inscrever-se" : "Atualizar informações", class: "btn btn-outline-light btn-lg") %>
         </div>

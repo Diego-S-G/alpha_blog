@@ -1,7 +1,12 @@
 <h1 class="text-center mt-4 mb-4">Perfil de <%= @user.username %></h1>
 <%= gravatar_for @user %>
+
+<div class="text-center mt-4">
+  <%= link_to "Editar Perfil", edit_user_path(@user), class: "btn btn-outline-secondary btn-lg" %>
+</div>
+
 <% if !@user.articles.empty? %>
-  <%= render 'articles/article' %>
+  <%= render 'articles/articles' %>
 <% else %>
   <div class="text-center mt-5 mb-4">
     <h3 class="mb-4">Por que não começamos a criar uns artigos?</h3>

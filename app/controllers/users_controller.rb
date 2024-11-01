@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [ :show, :edit, :update ]
+
   def show
-   @user = User.find(params[:id])
    @articles = @user.articles
   end
 
@@ -13,7 +14,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def create
@@ -27,7 +27,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "Informações atualizadas com sucesso!"
       redirect_to @user
@@ -37,6 +36,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:username, :email, :password)
