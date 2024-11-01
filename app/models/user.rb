@@ -9,5 +9,11 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  validates :password, length: { minimum: 6, maximum: 20 }
+  validates :password, length: { minimum: 6, maximum: 8 }, if: :password_required?
+
+  private
+
+  def password_required?
+    password.present?
+  end
 end
