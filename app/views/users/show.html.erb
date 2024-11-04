@@ -1,9 +1,11 @@
 <h1 class="text-center mt-4 mb-4">Perfil de <%= @user.username %></h1>
 <%= gravatar_for @user %>
 
-<div class="text-center mt-4">
-  <%= link_to "Editar Perfil", edit_user_path(@user), class: "btn btn-outline-secondary btn-lg" %>
-</div>
+<% if logged_in? && @user == current_user %>
+  <div class="text-center mt-4">
+    <%= link_to "Editar Perfil", edit_user_path(@user), class: "btn btn-outline-secondary btn-lg" %>
+  </div>
+<% end %>
 
 <div class="flickr_pagination mt-5">
   <%= will_paginate @articles, :container => false %>
@@ -12,8 +14,12 @@
   <%= render 'articles/articles' %>
 <% else %>
   <div class="text-center mt-5 mb-4">
-    <h3 class="mb-4">Por que não começamos a criar uns artigos?</h3>
-    <%= link_to "Começar já!", new_article_path, class: "btn btn-success btn-lg" %>
+    <% if logged_in? && @user == current_user %>
+      <h3 class="mb-4">Por que não começamos a criar uns artigos?</h3>
+      <%= link_to "Começar já!", new_article_path, class: "btn btn-success btn-lg" %>
+    <% else %>
+      <h3 class="mb-4">Este usuário não possui artigos. Quem sabe no futuro...</h3>
+    <% end %>  
   </div>
 <% end %>
 <div class="flickr_pagination mb-4">

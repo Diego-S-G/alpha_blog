@@ -19,8 +19,10 @@
               <h5 class="card-title"><%= link_to truncate(article.title, length: 50), article_path(article), class: "article-title text-success text-decoration-none" %></h5>
               <p class="card-text text-start"><%= simple_format(truncate(article.description, length: 70)) %></p>
               <%= link_to "Ver", article_path(article), class: "btn btn-outline-success", style: "width: 80px" %>
-              <%= link_to "Editar", edit_article_path(article), class: "btn btn-outline-primary", style: "width: 80px" %>
-              <%= link_to "Remover", article_path(article), data: { turbo_method: :delete, "turbo-confirm": "Tem certeza?" }, class: "btn btn-outline-danger", style: "width: 91px" %>
+              <% if logged_in? && article.user == current_user %>
+                <%= link_to "Editar", edit_article_path(article), class: "btn btn-outline-primary", style: "width: 80px" %>
+                <%= link_to "Remover", article_path(article), data: { turbo_method: :delete, "turbo-confirm": "Tem certeza?" }, class: "btn btn-outline-danger", style: "width: 91px" %>
+              <% end %>  
             </div>
 
             <div class="card-footer text-body-secondary">
