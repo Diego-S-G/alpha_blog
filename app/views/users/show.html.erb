@@ -4,6 +4,7 @@
 <% if logged_in? && @user == current_user %>
   <div class="text-center mt-4">
     <%= link_to "Editar Perfil", edit_user_path(@user), class: "btn btn-outline-secondary btn-lg" %>
+    <%= link_to "Excluir Perfil", user_path(@user), data: { turbo_method: :delete, "turbo-confirm": "Deseja mesmo excluir o usuário? Esta ação é irreversível." }, class: "btn btn-outline-danger btn-lg" %>
   </div>
 <% end %>
 
