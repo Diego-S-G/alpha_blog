@@ -5,6 +5,9 @@
   <%= link_to "Editar Perfil", edit_user_path(@user), class: "btn btn-outline-secondary btn-lg" %>
 </div>
 
+<div class="flickr_pagination mt-5">
+  <%= will_paginate @articles, :container => false %>
+</div>
 <% if !@user.articles.empty? %>
   <%= render 'articles/articles' %>
 <% else %>
@@ -13,3 +16,6 @@
     <%= link_to "Começar já!", new_article_path, class: "btn btn-success btn-lg" %>
   </div>
 <% end %>
+<div class="flickr_pagination mb-4">
+  <%= will_paginate @articles, :container => false %>
+</div>
