@@ -19,14 +19,22 @@
              <li class="nav-item">
               <%= link_to "Novo Artigo", new_article_path, class: "nav-link" %>
             </li>
-
-            <li class="nav-item">
-              <%= link_to "Entrar", login_path, class: "nav-link" %>
-            </li>
-
-            <li class="nav-item">
-              <%= link_to "Sair", logout_path, class: "nav-link", data: { turbo_method: :delete, "turbo-confirm": "Confirme para deslogar" } %>
-            </li>
+            
+            <% if logged_in? %>
+              <li class="nav-item">
+                <%= link_to current_user.username, user_path(current_user), class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Sair", logout_path, class: "nav-link", data: { turbo_method: :delete, "turbo-confirm": "Confirme para deslogar" } %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "Entrar", login_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Inscreva-se", signup_path, class: "nav-link" %>
+              </li>
+            <% end %>  
           </ul>
 
           <form class="d-flex" role="search">
