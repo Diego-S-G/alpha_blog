@@ -23,9 +23,14 @@
             <div class="card-body">
               <%= link_to gravatar_for(user), user %>
               <p class="card-text text-center mt-3"><%= pluralize(user.articles.count, "Artigo") %></p>
-              <%= link_to "Ver Perfil", user, class: "btn btn-outline-success" %>
-              <% if logged_in? && user == current_user %>
-                <%= link_to "Editar Perfil", edit_user_path(user), class: "btn btn-outline-primary" %>
+              <%= link_to "Ver Perfil", user, class: "btn btn-outline-success", style: "width: 115px" %>
+              <% if logged_in? %>
+                <% if user == current_user %>
+                  <%= link_to "Editar Perfil", edit_user_path(user), class: "btn btn-outline-primary", style: "width: 115px" %>
+                <% end %>
+                <% if current_user.admin? %>
+                  <%= link_to "Excluir Usuário", user_path(user), data: { turbo_method: :delete, "turbo-confirm": "Deseja mesmo excluir o usuário? Esta ação é irreversível." }, class: "btn btn-outline-danger" %>
+                <% end %>
               <% end %>
             </div>
             

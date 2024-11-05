@@ -13,7 +13,7 @@
 
           <div class="card-body">
             <div class="card-text text-start"><%= simple_format(@article.description) %></div>
-            <% if logged_in? && @article.user == current_user %>
+            <% if logged_in? && (@article.user == current_user || current_user.admin?) %>
               <%= link_to "Editar", edit_article_path(@article), class: "btn btn-outline-primary", style: "width: 80px" %>
               <%= link_to "Remover", article_path(@article), data: { turbo_method: :delete, "turbo-confirm": "Tem certeza?" }, class: "btn btn-outline-danger", style: "width: 91px" %>
             <% end %>

@@ -1,10 +1,14 @@
 <h1 class="text-center mt-4 mb-4">Perfil de <%= @user.username %></h1>
 <%= gravatar_for @user %>
 
-<% if logged_in? && @user == current_user %>
+<% if logged_in? %>
   <div class="text-center mt-4">
-    <%= link_to "Editar Perfil", edit_user_path(@user), class: "btn btn-outline-secondary btn-lg" %>
-    <%= link_to "Excluir Perfil", user_path(@user), data: { turbo_method: :delete, "turbo-confirm": "Deseja mesmo excluir o usuário? Esta ação é irreversível." }, class: "btn btn-outline-danger btn-lg" %>
+    <% if @user == current_user %>
+        <%= link_to "Editar Perfil", edit_user_path(@user), class: "btn btn-outline-secondary btn-lg" %>
+    <% end %>
+    <% if @user == current_user || current_user.admin? %>
+      <%= link_to "Excluir Usuário", user_path(@user), data: { turbo_method: :delete, "turbo-confirm": "Deseja mesmo excluir o usuário? Esta ação é irreversível." }, class: "btn btn-outline-danger btn-lg" %>
+    <% end %>
   </div>
 <% end %>
 

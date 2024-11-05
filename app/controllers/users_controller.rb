@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [ :show, :edit, :update, :destroy ]
   before_action :require_user, only: [ :edit, :update ]
-  before_action :require_same_user, only: [ :edit, :update, :destroy ]
+  before_action :require_same_user, only: [ :edit, :update ]
+  before_action :require_admin, only: [ :destroy ]
 
   def show
    @articles = @user.articles.paginate(page: params[:page], per_page: 5)
@@ -45,7 +46,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    session[:user_id] = nil
+    session[:user_id] = nil if @user == current_user
     flash[:notice] = "O usuário e todos os artigos relacionados a ele foram removidos com sucesso."
     redirect_to root_path
   end
@@ -63,6 +64,13 @@ class UsersController < ApplicationController
   def require_same_user
     if current_user != @user
       flash[:alert] = "Você não é este usuário para fazer isto!"
+      redirect_to @user
+    end
+  end
+
+  def require_admin
+    if current_user != @user && !current_user.admin?
+      flash[:alert] = "Apenas o pŕoprio usuário ou o Admin podem fazer isso!"
       redirect_to @user
     end
   end
