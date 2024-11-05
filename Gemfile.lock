@@ -76,6 +76,7 @@ GEM
       public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.2)
     base64 (0.2.0)
+    bcrypt (3.1.20)
     benchmark (0.3.0)
     bigdecimal (3.1.8)
     bindex (0.8.1)
@@ -305,6 +306,7 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    will_paginate (4.0.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.7.1)
@@ -326,6 +328,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap
   brakeman
   capybara
@@ -343,6 +346,7 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   web-console
+  will_paginate (~> 4.0)
 
 BUNDLED WITH
    2.5.22

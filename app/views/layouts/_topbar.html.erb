@@ -1,18 +1,59 @@
 <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
     <div class="container-fluid">
         <%= link_to "Alpha Blog", root_path, class: "navbar-brand", id: "logo" %>
+        
         <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <div class="vr text-white"></div>
+            
+            <li class="nav-item">
+              <%= link_to "Bloggers", users_path, class: "nav-link" %>
+            </li>
+
             <li class="nav-item">
               <%= link_to "Artigos", articles_path, class: "nav-link" %>
             </li>
-             <li class="nav-item">
-              <%= link_to "Novo Artigo", new_article_path, class: "nav-link" %>
-            </li>
+
+            <div class="vr text-white"></div>
+            
+            <% if logged_in? %>
+              <li class="nav-item">
+                <%= link_to "Novo Artigo", new_article_path, class: "nav-link" %>
+              </li>
+            <% end %>
+
+            <div class="vr text-white"></div>
+            
+            <% if logged_in? %>
+              <div class="d-flex" style="margin-left: 5px">
+                <li class="mt-2 text-danger">
+                  <%= " [Admin]" if current_user.admin? %>
+                </li>  
+                <li class="nav-item">
+                  <%= link_to current_user.username, user_path(current_user), class: "nav-link" %>
+                </li>
+              </div>
+              <li class="nav-item">
+                <%= link_to "Edite seu Perfil", edit_user_path(current_user), class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Sair", logout_path, class: "nav-link", data: { turbo_method: :delete, "turbo-confirm": "Confirme para deslogar" } %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "Entrar", login_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Inscreva-se", signup_path, class: "nav-link" %>
+              </li>
+            <% end %>  
           </ul>
+
+ 
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Pesquisar</button>

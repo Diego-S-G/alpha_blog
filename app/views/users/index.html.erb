@@ -1,0 +1,48 @@
+<head>
+  <%= stylesheet_link_tag "index_users", media: "all" %>
+</head>
+
+<div class="text-center mt-4">
+  <div class="container">
+    <h1 class="text-center mb-4">Alpha Bloggers</h1>
+    
+    <div class="flickr_pagination">
+      <%= will_paginate @users, :container => false %>
+    </div>
+
+    <% @users.each do |user|%>
+      <div class="row justify-content-md-center">
+        <div class="col-8 mt-4">
+          <div class="card text-center shadow mb-5 bg-body-tertiary rounded">
+            <div class="card-header">
+              <em>
+                <%= link_to user.username, user, class: "user-name text-decoration-none" %>
+              </em>
+            </div>
+
+            <div class="card-body">
+              <%= link_to gravatar_for(user), user %>
+              <p class="card-text text-center mt-3"><%= pluralize(user.articles.count, "Artigo") %></p>
+              <%= link_to "Ver Perfil", user, class: "btn btn-outline-success", style: "width: 115px" %>
+              <% if logged_in? %>
+                <% if user == current_user %>
+                  <%= link_to "Editar Perfil", edit_user_path(user), class: "btn btn-outline-primary", style: "width: 115px" %>
+                <% end %>
+                <% if current_user.admin? %>
+                  <%= link_to "Excluir Usuário", user_path(user), data: { turbo_method: :delete, "turbo-confirm": "Deseja mesmo excluir o usuário? Esta ação é irreversível." }, class: "btn btn-outline-danger" %>
+                <% end %>
+              <% end %>
+            </div>
+            
+            <div class="card-footer text-body-secondary">
+              <small>Joined <%= time_ago_in_words(user.created_at) %> ago</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
+<div class="flickr_pagination mb-4">
+  <%= will_paginate @users, :container => false %>
+</div>

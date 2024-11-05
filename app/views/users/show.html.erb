@@ -1,0 +1,32 @@
+<h1 class="text-center mt-4 mb-4">Perfil de <%= @user.username %></h1>
+<%= gravatar_for @user %>
+
+<% if logged_in? %>
+  <div class="text-center mt-4">
+    <% if @user == current_user %>
+        <%= link_to "Editar Perfil", edit_user_path(@user), class: "btn btn-outline-secondary btn-lg" %>
+    <% end %>
+    <% if @user == current_user || current_user.admin? %>
+      <%= link_to "Excluir Usuário", user_path(@user), data: { turbo_method: :delete, "turbo-confirm": "Deseja mesmo excluir o usuário? Esta ação é irreversível." }, class: "btn btn-outline-danger btn-lg" %>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="flickr_pagination mt-5">
+  <%= will_paginate @articles, :container => false %>
+</div>
+<% if !@user.articles.empty? %>
+  <%= render 'articles/articles' %>
+<% else %>
+  <div class="text-center mt-5 mb-4">
+    <% if logged_in? && @user == current_user %>
+      <h3 class="mb-4">Por que não começamos a criar uns artigos?</h3>
+      <%= link_to "Começar já!", new_article_path, class: "btn btn-success btn-lg" %>
+    <% else %>
+      <h3 class="mb-4">Este usuário não possui artigos. Quem sabe no futuro...</h3>
+    <% end %>  
+  </div>
+<% end %>
+<div class="flickr_pagination mb-4">
+  <%= will_paginate @articles, :container => false %>
+</div>
