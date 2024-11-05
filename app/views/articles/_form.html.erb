@@ -5,14 +5,14 @@
       
       <%= form_with(model: @article, class: "form-partial shadow p-3 mb-3 rounded", local: true) do |form| %>
         <div class="form-group row mb-4">
-          <%= form.label "Título", class: "col-2 col-form-label text-light" %>
+          <%= form.label :title, "Título", class: "col-2 col-form-label text-light" %>
           <div class="col-10">
             <%= form.text_field :title, class: "form-control p-2 shadow rounded", placeholder: "Insira o título aqui" %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= form.label "Descrição", class: "col-2 col-form-label text-light" %> <br>
+          <%= form.label :description, "Descrição", class: "col-2 col-form-label text-light" %> <br>
           <div class="col-10">
             <%= form.text_area :description, rows: 10, class: "form-control shadow rounded", placeholder: "Insira a descrição aqui" %>
           </div>
