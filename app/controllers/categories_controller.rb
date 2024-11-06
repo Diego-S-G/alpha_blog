@@ -1,8 +1,8 @@
 class CategoriesController < ApplicationController
+  before_action :set_category, only: [ :show, :edit, :update ]
   before_action :require_admin, except: [ :show, :index ]
 
   def show
-    @category = Category.find(params[:id])
     @articles = @category.articles.paginate(page: params[:page], per_page: 5)
   end
 
@@ -12,6 +12,9 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
+  end
+
+  def edit
   end
 
   def create
@@ -24,7 +27,20 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def update
+    if @category.update(category_params)
+      flash[:notice] = "Categoria atualizada com sucesso!"
+      redirect_to @category
+    else
+      render "edit", status: :unprocessable_entity
+    end
+  end
+
   private
+
+  def set_category
+    @category = Category.find(params[:id])
+  end
 
   def category_params
     params.require(:category).permit(:name)
