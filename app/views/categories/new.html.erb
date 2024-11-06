@@ -1,3 +1,11 @@
 <h1 class="text-center mt-4 mb-4">Adicionar Categoria</h1>
 
-<%= render 'form' %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <%= render 'form' %>
+    </div>
+    
+    <%= link_to "[ Cancelar e voltar para categorias ]", categories_path, class: "go-back-partial text-center mb-4" %>
+  </div>
+</div>
