@@ -19,6 +19,7 @@
             
             <div class="card-body">
               <h5 class="card-title"><%= link_to category.name, category_path(category), class: "category-name text-success text-decoration-none" %></h5>
+              <p class="card-text text-center mt-3"><%= pluralize(category.articles.count, "Artigo") %></p>
             </div>
 
             <div class="card-footer text-body-secondary">
