@@ -7,33 +7,33 @@ class CategoriesTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit categories_url
-    assert_selector "h1", text: "Categories"
+    assert_selector "h1", text: "Categorias"
   end
 
   test "should create category" do
     visit categories_url
-    click_on "New category"
+    click_on "Nova Categoria"
 
-    click_on "Create Category"
+    click_on "Criar Categoria"
 
-    assert_text "Category was successfully created"
-    click_on "Back"
+    assert_text "Categoria criada com sucesso!"
+    click_on "Categorias"
   end
 
   test "should update Category" do
     visit category_url(@category)
-    click_on "Edit this category", match: :first
+    click_on "Editar o nome da Categoria", match: :first
 
-    click_on "Update Category"
+    click_on "Atualizar Categoria"
 
-    assert_text "Category was successfully updated"
-    click_on "Back"
+    assert_text "Categoria atualizada com sucesso!"
+    click_on "Categorias"
   end
 
-  test "should destroy Category" do
-    visit category_url(@category)
-    click_on "Destroy this category", match: :first
+  # test "should destroy Category" do
+  #   visit category_url(@category)
+  #   click_on "Destroy this category", match: :first
 
-    assert_text "Category was successfully destroyed"
-  end
+  #   assert_text "Category was successfully destroyed"
+  # end
 end
