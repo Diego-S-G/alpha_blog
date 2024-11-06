@@ -8,6 +8,11 @@
             <em>
               Por: <%= @article.user.username %>
               <%= link_to gravatar_for(@article.user, size: 80), user_path(@article.user) %>
+              <% if @article.categories.any? %>
+                <div class="mt-2">
+                  <%= render @article.categories %>
+                </div>
+              <% end %>  
             </em>
           </div>
 
