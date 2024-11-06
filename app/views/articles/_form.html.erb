@@ -11,14 +11,23 @@
           </div>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row mb-4">
           <%= form.label :description, "Descrição", class: "col-2 col-form-label text-light" %> <br>
           <div class="col-10">
             <%= form.text_area :description, rows: 10, class: "form-control shadow rounded", placeholder: "Insira a descrição aqui" %>
           </div>
         </div>
+
+        <div class="form-group row">
+          <%= form.label :category, "Categorias", class: "col-2 col-form-label text-light" %> <br>
+          <div class="col-10">
+            <%= form.collection_select :category_ids, Category.order(:name), :id, :name, 
+            { prompt: false }, { multiple: true, size: 3, class: "form-select form-control shadow rounded" } %>
+            <p class="text-white mt-2">Selecione a(s) categoria(s) na lista acima (pode ser vazio)</p>
+          </div>
+        </div>
         
-        <div class="form-group text-end mt-3">
+        <div class="form-group text-end">
           <%= form.submit(@article.new_record? ? "Criar Artigo" : "Atualizar Artigo", class: "btn btn-outline-light btn-lg") %>
         </div>
       <% end %>
