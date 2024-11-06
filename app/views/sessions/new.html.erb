@@ -6,14 +6,14 @@
       <%= form_with(scope: :session, url: login_path, class: "form-partial shadow p-3 mb-3 rounded", local: true) do |form| %>
         
         <div class="form-group row mb-2">
-          <%= form.label "E-mail", class: "form-label col-form-label-lg  text-light" %> <br>
+          <%= form.label :email, "E-mail", class: "form-label col-form-label-lg  text-light" %> <br>
           <div>
             <%= form.email_field :email, class: "form-control form-control-lg shadow rounded", placeholder: "Insira seu e-mail aqui" %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= form.label "Senha", class: "form-label col-form-label-lg  text-light" %> <br>
+          <%= form.label :password, "Senha", class: "form-label col-form-label-lg  text-light" %> <br>
           <div>
             <%= form.password_field :password, class: "form-control form-control-lg shadow rounded", placeholder: "Insira sua senha aqui" %>
           </div>

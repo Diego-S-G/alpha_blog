@@ -17,6 +17,10 @@
             <li class="nav-item">
               <%= link_to "Artigos", articles_path, class: "nav-link" %>
             </li>
+            
+            <li class="nav-item">
+              <%= link_to "Categorias", categories_path, class: "nav-link" %>
+            </li>
 
             <div class="vr text-white"></div>
             
@@ -24,6 +28,11 @@
               <li class="nav-item">
                 <%= link_to "Novo Artigo", new_article_path, class: "nav-link" %>
               </li>
+              <% if current_user.admin? %>
+                <li class="nav-item">
+                  <%= link_to "Nova Categoria", new_category_path, class: "nav-link" %>
+                </li>
+              <% end %>
             <% end %>
 
             <div class="vr text-white"></div>
