@@ -30,4 +30,4 @@ https://github.com/user-attachments/assets/172aebf4-a503-41c6-a848-c1acf63f5715
 
 <br/>
 
-**OBS:** Os vídeos de demonstração foram gravados na minha máquina Linux, usando a própria função de gravação de tela. Infelizmente o cursor do mouse não funcionou do jeito esperado e ficou estático na tela. Perdão.
+**Observação:** Os vídeos de demonstração foram gravados na minha máquina Linux, usando a própria função de gravação de tela. Infelizmente o cursor do mouse não funcionou do jeito esperado e ficou estático na tela. Perdão.
