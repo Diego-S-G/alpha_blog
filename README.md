@@ -4,7 +4,10 @@
 Este é um dos projetos que fiz acompanhando o [curso do Mashrur Hossain na Udemy](https://www.udemy.com/course/the-complete-ruby-on-rails-developer-course) na minha trilha de aprendizado de Ruby e Rails.
 <br/>
 
-O Alpha Blog consiste em uma aplicação onde os usuários podem criar seus próprios artigos, editá-los e excluí-los, conseguindo também ver outros usuários e seus respectivos artigos. Ele foi feito usando Ruby 3.3.5 e Rails 7.2.2.
+O Alpha Blog consiste em uma aplicação onde os usuários podem criar seus próprios artigos, editá-los e excluí-los, conseguindo também ver outros usuários e seus respectivos artigos. 
+<br/>
+
+Este projeto foi feito usando Ruby 3.3.5 e Rails 7.2.2.
 <br/>
 
 ## Funcionamento:
